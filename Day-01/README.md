@@ -13,7 +13,7 @@ On the first day of the VLSI System Design (VSD) Workshop, the Linux Virtual Mac
 A **testbench** is a Verilog module used to verify the functionality of a digital design. Unlike the design module, a testbench has **no input or output ports**. It generates different input combinations (stimulus), applies them to the Design Under Test (DUT), and observes the resulting outputs to ensure the design behaves as expected.
 
 <p align="center">
-  <img src="images/your_testbench_image.png" alt="Testbench" width="800">
+  <img src="images/test.png" alt="Testbench" width="800">
 </p>
 
 <p align="center"><em>Figure 1: Basic structure of a Verilog testbench.</em></p>
@@ -31,7 +31,7 @@ The testbench consists of three main components:
 Icarus Verilog is an open-source Verilog compiler and simulator used to verify digital designs before hardware implementation.
 
 <p align="center">
-  <img src="images/your_iverilog_flow_image.png" alt="Icarus Verilog Flow" width="850">
+  <img src="images/simflow.png" alt="Icarus Verilog Flow" width="850">
 </p>
 
 <p align="center"><em>Figure 2: Icarus Verilog simulation flow.</em></p>
@@ -51,7 +51,7 @@ The simulation flow consists of the following steps:
 Simulation verifies whether a design functions correctly, whereas **synthesis** converts the RTL description into an actual hardware implementation.
 
 <p align="center">
-  <img src="images/your_synthesis_image.png" alt="Synthesis Flow" width="850">
+  <img src="images/synth.png" alt="Synthesis Flow" width="850">
 </p>
 
 <p align="center"><em>Figure 3: RTL to Gate-Level Synthesis.</em></p>
@@ -73,7 +73,7 @@ The Linux Virtual Machine serves as the development environment for the workshop
 ### Login Screen
 
 <p align="center">
-  <img src="images/your_login_image.png" alt="Linux VM Login" width="850">
+  <img src="images/login.png" alt="Linux VM Login" width="850">
 </p>
 
 <p align="center"><em>Figure 4: Login screen of the VSD Linux Virtual Machine running on Oracle VirtualBox.</em></p>
@@ -97,17 +97,6 @@ The following Linux commands were used to navigate the file system and manage fi
 | `cat` | Display file contents |
 | `clear` | Clear the terminal |
 
-### Terminal Execution
-
-<p align="center">
-  <img src="images/your_linux_commands_image.png" alt="Linux Commands" width="850">
-</p>
-
-<p align="center"><em>Figure 5: Executing basic Linux commands in the terminal.</em></p>
-
-The screenshot above demonstrates the execution of common Linux commands that are essential for navigating directories and managing project files throughout the workshop.
-
----
 
 # 4️⃣ Practical Exercise – Simulating a 2:1 Multiplexer
 
@@ -163,7 +152,19 @@ Executing the compiled simulation runs the testbench and produces the waveform f
 
 ---
 
-## Step 4 – Open the Waveform
+### Terminal Output
+
+<p align="center">
+  <img src="images/exec.png" alt="Simulation Terminal Output" width="850">
+</p>
+
+<p align="center"><em>Figure 7: Terminal output after compiling and executing the Verilog design using Icarus Verilog.</em></p>
+
+The terminal confirms that the design and testbench were successfully compiled and executed, resulting in the generation of the waveform file (`tb_good_mux.vcd`).
+
+---
+
+## Step 5 – Open the Waveform
 
 ```bash
 gtkwave tb_good_mux.vcd
@@ -171,17 +172,27 @@ gtkwave tb_good_mux.vcd
 
 The generated waveform file is opened in GTKWave, allowing the behavior of the 2:1 Multiplexer to be analyzed visually.
 
-### GTKWave Output
+### Launching GTKWave
 
 <p align="center">
-  <img src="images/your_gtkwave_image.png" alt="GTKWave Output" width="850">
+  <img src="images/gtkwave.png" alt="Launching GTKWave" width="850">
 </p>
 
-<p align="center"><em>Figure 6: GTKWave waveform verifying the correct operation of the 2:1 Multiplexer.</em></p>
+<p align="center"><em>Figure 8: GTKWave loading the generated VCD file.</em></p>
 
-The waveform confirms the correct functionality of the multiplexer by showing the output changing according to the values of the select signal and the corresponding input.
+GTKWave reads the generated VCD file and displays all the recorded signals, enabling detailed analysis of the circuit's behavior over time.
 
 ---
+
+### Simulation Waveform
+
+<p align="center">
+  <img src="images/output.png" alt="GTKWave Waveform Output" width="850">
+</p>
+
+<p align="center"><em>Figure 9: Simulation waveform of the 2:1 Multiplexer displayed in GTKWave.</em></p>
+
+The waveform verifies the correct operation of the multiplexer. As the **select (`sel`)** signal changes, the output **`y`** follows either **`i0`** or **`i1`**, confirming that the RTL design functions as expected.
 
 # Summary
 
