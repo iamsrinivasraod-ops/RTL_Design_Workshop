@@ -194,10 +194,174 @@ GTKWave reads the generated VCD file and displays all the recorded signals, enab
 
 The waveform verifies the correct operation of the multiplexer. As the **select (`sel`)** signal changes, the output **`y`** follows either **`i0`** or **`i1`**, confirming that the RTL design functions as expected.
 
+---
+
+# 5️⃣ RTL Synthesis Using Yosys
+
+After verifying the functionality of the RTL design through simulation, the next stage is **RTL synthesis**. Synthesis transforms the Verilog RTL description into a **gate-level netlist** by mapping the design to cells available in a standard cell library.
+
+Unlike simulation, which only checks whether the design behaves correctly, synthesis prepares the circuit for actual hardware implementation.
+
+---
+
+## Launching Yosys
+
+The synthesis process begins by opening the **Yosys Open Synthesis Suite**.
+
+```bash
+yosys
+```
+
+<p align="center">
+  <img src="images/yosys.png" width="850">
+</p>
+
+<p align="center"><em>Figure 10: Launching the Yosys synthesis tool.</em></p>
+
+Once inside the Yosys shell, synthesis commands can be executed to convert the RTL description into a gate-level implementation.
+
+---
+
+## RTL vs Gate-Level Design
+
+| RTL Design | Gate-Level Netlist |
+|------------|--------------------|
+| Describes circuit functionality using Verilog. | Represents the design as interconnected logic gates. |
+| Easier to understand and modify. | Ready for implementation and physical design. |
+| Used during functional simulation. | Used for implementation and Gate-Level Simulation (GLS). |
+
+---
+
+## Synthesizing the Good Mux Design
+
+The following commands were executed to synthesize the **good_mux** module.
+
+```tcl
+yosys
+
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+read_verilog good_mux.v
+
+synth -top good_mux
+
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+
+write_verilog -noattr good_mux_net.v
+```
+
+### Command Explanation
+
+| Command | Description |
+|---------|-------------|
+| `read_liberty` | Loads the SKY130 standard cell library. |
+| `read_verilog` | Imports the RTL Verilog design. |
+| `synth -top` | Synthesizes the specified top-level module. |
+| `abc` | Performs technology mapping using the standard cell library. |
+| `write_verilog` | Generates the synthesized gate-level netlist. |
+
+---
+
+## Synthesis Statistics
+
+After synthesis, Yosys reports useful statistics about the generated hardware such as the number of ports, wires, cells, and logic elements used in the design.
+
+For the **good_mux** design, the synthesis report shows that the circuit is implemented using a single multiplexer cell.
+
+<p align="center">
+  <img src="images/stat.png" width="850">
+</p>
+
+<p align="center"><em>Figure 11: Yosys synthesis statistics for the Good Mux design.</em></p>
+
+---
+
+## Gate-Level Representation
+
+Yosys can generate a graphical representation of the synthesized circuit using the **show** command. This creates a DOT graph that visually represents how the RTL has been converted into hardware.
+
+```tcl
+show
+```
+
+<p align="center">
+  <img src="images/dot.png" width="700">
+</p>
+
+<p align="center"><em>Figure 12: Gate-level representation of the synthesized Good Mux.</em></p>
+
+The generated diagram clearly shows the multiplexer with its inputs (`i0`, `i1`, `sel`) and output (`y`), providing a simple visualization of the synthesized hardware.
+
+---
+
+## Generated Gate-Level Netlist
+
+After synthesis, the following command generates the synthesized Verilog netlist.
+
+```tcl
+write_verilog -noattr good_mux_net.v
+```
+
+The generated netlist can be viewed using:
+
+```bash
+cat good_mux_net.v
+```
+
+<p align="center">
+  <img src="images/netlist.png" width="850">
+</p>
+
+<p align="center"><em>Figure 13: Generated gate-level Verilog netlist.</em></p>
+
+Unlike the original RTL code, this file contains interconnected standard cells from the SKY130 library that implement the same functionality.
+
+---
+
+## Standard Cell Library
+
+Synthesis requires a **Standard Cell Library**, which contains pre-designed logic cells such as AND, OR, NAND, NOR, XOR gates, multiplexers, buffers, and flip-flops.
+
+This workshop uses the **SKY130 HD Standard Cell Library**, allowing the synthesis tool to build the hardware implementation using optimized digital cells.
+
+---
+
+## Cell Flavors
+
+A single logic gate is available in several different implementations, commonly referred to as **cell flavors**.
+
+| High-Speed Cells | Low-Power Cells |
+|------------------|-----------------|
+| Lower propagation delay | Lower power consumption |
+| Higher operating frequency | Smaller silicon area |
+| Used for timing-critical paths | Used for non-critical paths |
+
+During synthesis, Yosys automatically selects the most suitable cells depending on timing, area, and power requirements.
+
+---
+
+## Gate-Level Simulation (GLS)
+
+Once synthesis is complete, the generated gate-level netlist can be verified using **Gate-Level Simulation (GLS)**.
+
+Instead of simulating the original RTL design, the synthesized netlist is simulated using the **same testbench** together with the SKY130 standard cell models.
+
+If the gate-level waveform matches the RTL waveform, it confirms that synthesis has preserved the original functionality of the design.
+
+---
+
 # Summary
 
-- Successfully launched the Linux Virtual Machine.
-- Practiced essential Linux terminal commands.
-- Compiled a Verilog design using Icarus Verilog.
-- Executed the simulation and generated a waveform.
-- Verified the functionality of the 2:1 Multiplexer using GTKWave.
+- Reviewed the complete RTL-to-GDS design flow.
+- Learned the purpose of a Verilog testbench.
+- Performed RTL simulation using **Icarus Verilog**.
+- Visualized waveforms using **GTKWave**.
+- Practiced essential Linux commands inside the VSD Virtual Machine.
+- Successfully designed and verified a **2:1 Multiplexer**.
+- Introduced RTL synthesis using **Yosys**.
+- Converted the RTL design into a **gate-level netlist**.
+- Examined synthesis statistics reported by Yosys.
+- Generated a graphical gate-level representation using the **show** command.
+- Viewed the synthesized Verilog netlist.
+- Understood the role of the **SKY130 Standard Cell Library** and different cell flavors.
+- Learned how Gate-Level Simulation verifies that the synthesized hardware matches the original RTL design.
