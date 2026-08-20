@@ -44,6 +44,7 @@ VSD-Workshop
 │
 ├── README.md
 ├── Day-01
+├── Day-02
 ```
 
 ---
@@ -53,6 +54,7 @@ VSD-Workshop
 | Day | Topics | Link |
 |------|---------|------|
 | Day 1 | Linux Setup & Virtual Machine Installation | [Day 1](Day-01/) |
+| Day 2 | Timing Libraries, Synthesis Approaches & Flip-Flop Coding Styles | [Day 2](Day-02/) |
 
 *(The table will be updated as more sessions are completed.)*
 
