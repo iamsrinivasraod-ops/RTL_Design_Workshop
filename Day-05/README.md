@@ -172,7 +172,7 @@ When `i0 = 0`, `y` retains its previous value, causing latch inference.
 <!-- Add waveform image here -->
 
 <p align="center">
-<img src="images/tb_incomp_if.vcd.png" width="850">
+<img src="images/incompif.png" width="850">
 </p>
 
 ### Synthesized Netlist
@@ -180,7 +180,7 @@ When `i0 = 0`, `y` retains its previous value, causing latch inference.
 <!-- Add synthesized netlist image here -->
 
 <p align="center">
-<img src="images/incomp_if_netlist.png" width="850">
+<img src="images/incompiflist.png" width="850">
 </p>
 
 **Learning:** Missing assignments in combinational logic can infer unintended latches.
@@ -211,7 +211,7 @@ The final condition is uncovered, so a latch may be inferred.
 ### Synthesized Netlist
 
 <p align="center">
-<img src="images/incomp_if2_netlist.png" width="850">
+<img src="images/incompif2list.png" width="850">
 </p>
 
 ### Complete Version
@@ -260,13 +260,13 @@ The uncovered conditions can cause latch inference.
 ### Waveform
 
 <p align="center">
-<img src="images/tb_incomp_case.vcd.png" width="850">
+<img src="images/incompcase.png" width="850">
 </p>
 
 ### Synthesized Netlist
 
 <p align="center">
-<img src="images/incomp_case_netlist.png" width="850">
+<img src="images/incompcaselist.png" width="850">
 </p>
 
 **Learning:** Combinational `case` statements should have complete coverage or a suitable `default`.
@@ -297,13 +297,13 @@ end
 ### Waveform
 
 <p align="center">
-<img src="images/tb_comp_case.vcd.png" width="850">
+<img src="images/compcase.png" width="850">
 </p>
 
 ### Synthesized Netlist
 
 <p align="center">
-<img src="images/comp_case_netlist.png" width="850">
+<img src="images/compcaselist.png" width="850">
 </p>
 
 **Learning:** `default` provides defined behavior for unspecified selector values.
@@ -349,7 +349,7 @@ Therefore, storage may be inferred for `x`.
 ### Synthesized Netlist
 
 <p align="center">
-<img src="images/partial_case_assign_netlist.png" width="850">
+<img src="images/partcase.png" width="850">
 </p>
 
 **Learning:** Every output must be assigned correctly in every execution path.
@@ -402,7 +402,7 @@ Wildcard conditions should be written carefully to avoid unintended selection or
 ### Waveform
 
 <p align="center">
-<img src="images/tb_bad_case.vcd.png" width="850">
+<img src="images/badcase.png" width="850">
 </p>
 
 **Learning:** Overlapping wildcard patterns can make RTL behavior ambiguous and harder to verify.
@@ -543,7 +543,7 @@ A loop-based implementation reduces repetitive RTL and improves scalability.
 ### Waveform
 
 <p align="center">
-<img src="images/tb_mux_generate.vcd.png" width="850">
+<img src="images/mux.png" width="850">
 </p>
 
 **Learning:** Procedural loops can provide compact and scalable MUX logic.
@@ -570,7 +570,7 @@ A `case` statement directly represents these conditions.
 ### Waveform
 
 <p align="center">
-<img src="images/tb_demux_case.vcd.png" width="850">
+<img src="images/demux.png" width="850">
 </p>
 
 **Learning:** `case` provides a simple and readable DEMUX implementation.
@@ -607,7 +607,7 @@ Activate selected output
 ### Waveform
 
 <p align="center">
-<img src="images/tb_demux_generate.vcd.png" width="850">
+<img src="images/demuxgen.png" width="850">
 </p>
 
 **Learning:** A procedural loop provides a compact and scalable DEMUX description.
@@ -676,7 +676,7 @@ The generate loop creates one Full Adder for every bit, making the RCA scalable 
 ### RTL Simulation Waveform
 
 <p align="center">
-<img src="images/tb_rca.vcd.png" width="850">
+<img src="images/rca.png" width="850">
 </p>
 
 The waveform verifies the addition operation, sum, and carry behavior.
