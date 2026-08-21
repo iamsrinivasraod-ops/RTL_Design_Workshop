@@ -19,20 +19,6 @@ The experiments cover:
 
 ---
 
-## Table of Contents
-
-* [RTL Coding Styles: IF-ELSE and CASE](#rtl-coding-styles-if-else-and-case)
-* [Inferred Latches](#inferred-latches)
-* [Labs 1–2: Incomplete IF Statements](#labs-12-incomplete-if-statements)
-* [Labs 3–5: CASE Statements](#labs-35-case-statements)
-* [Lab 6: Overlapping CASE Statements](#lab-6-overlapping-case-statements)
-* [Redundancy Optimization During Synthesis](#redundancy-optimization-during-synthesis)
-* [Looping Constructs in Verilog](#looping-constructs-in-verilog)
-* [Labs 7–10: Loop-Based MUX, DEMUX, and RCA](#labs-710-loop-based-mux-demux-and-rca)
-* [Overall Summary](#overall-summary)
-
----
-
 ## RTL Coding Styles: IF-ELSE and CASE
 
 RTL describes digital hardware before it is converted into gates by synthesis.
@@ -718,7 +704,7 @@ The RTL and synthesized implementation can be compared using **Gate-Level Simula
 
 ---
 
-## Conclusion
+## Key Takeaways
 
 Day 5 focuses on writing **complete, clear, and synthesis-friendly RTL**.
 
