@@ -232,11 +232,8 @@ The waveform demonstrates that:
 * After reset is released, `q` becomes `1` on the appropriate clock edge.
 * The output then remains `1`.
 
-<!-- IMAGE PLACEHOLDER: dff_const1 GTKWave waveform – normal view -->
-
-<!-- IMAGE PLACEHOLDER: dff_const1 GTKWave waveform – zoomed view -->
-
-<!-- IMAGE PLACEHOLDER: dff_const1 GTKWave waveform – detailed view -->
+![RTL Simulation](images/const1.png)
+![Synthesis](images/const1syn.png)
 
 ---
 
@@ -298,7 +295,8 @@ Instead of keeping a flip-flop, the synthesis tool reduces the design to:
 
 The flip-flop is completely removed.
 
-<!-- IMAGE PLACEHOLDER: dff_const2 synthesized schematic -->
+![Synthesis](images/const2syn.png)
+
 
 This is a clear example of **constant propagation and sequential logic optimisation**.
 
@@ -312,7 +310,8 @@ q = 1
 
 throughout the simulation.
 
-<!-- IMAGE PLACEHOLDER: dff_const2 GTKWave waveform -->
+![RTL Simulation](images/const2.png)
+
 
 ### Key Observation
 
@@ -385,7 +384,8 @@ clk ──►│  FF  │──► q
 
 The synthesis tool retains the sequential elements because their behaviour cannot simply be replaced by a constant connection.
 
-<!-- IMAGE PLACEHOLDER: dff_const3 synthesized schematic -->
+![Synthesis](images/const3syn.png)
+
 
 ### Simulation
 
@@ -405,7 +405,7 @@ q1 → 1
 q  → follows the previous value of q1
 ```
 
-<!-- IMAGE PLACEHOLDER: dff_const3 GTKWave waveform -->
+![RTL Simulation](images/const3.png)
 
 ---
 
