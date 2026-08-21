@@ -1,4 +1,4 @@
-# Day 4 Workshop -- GLS and Synthesis Mismatch
+# Day 4 -- GLS and Synthesis Mismatch
 
 ## 1. Overview
 
