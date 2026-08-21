@@ -45,6 +45,9 @@ VSD-Workshop
 ├── README.md
 ├── Day-01
 ├── Day-02
+├── Day-03
+├── Day-04
+├── Day-05
 ```
 
 ---
@@ -55,6 +58,9 @@ VSD-Workshop
 |------|---------|------|
 | Day 1 | Linux Setup & Virtual Machine Installation | [Day 1](Day-01/) |
 | Day 2 | Timing Libraries, Synthesis Approaches & Flip-Flop Coding Styles | [Day 2](Day-02/) |
+| Day 3 | Combinational & Sequential Logic Optimization | [Day 3](Day-03/) |
+| Day 4 | RTL Design, Synthesis and Gate-Level Simulation | [Day 4](Day-04/) |
+| Day 5 | Day 5 – IF-ELSE, CASE, and Looping Constructs | [Day 5](Day-05/) |
 
 *(The table will be updated as more sessions are completed.)*
 
