@@ -69,7 +69,7 @@ The `tt` designation represents the **typical-typical process corner**, as oppos
 
 Therefore, the complete filename tells the synthesis and analysis tools which **Process, Voltage, and Temperature (PVT)** conditions the timing and power values are based on.
 
-<!-- IMAGE PLACEHOLDER: SKY130 PDK overview -->
+![lib](images/libfile.png)
 
 ---
 
@@ -181,9 +181,11 @@ without explicitly applying a `flatten` step, the module hierarchy can be retain
 
 This allows `u1` and `u2` to remain identifiable as separate sub-blocks.
 
-<!-- IMAGE PLACEHOLDER: Hierarchical Modules -->
+![lib](images/multmods.png)
 
-<!-- IMAGE PLACEHOLDER: Sub-module Example -->
+
+![lib](images/submod.png)
+
 
 ---
 
@@ -221,9 +223,11 @@ Final Netlist
 * It becomes harder to directly map sections of the synthesized design back to individual RTL modules.
 * Larger and more complex netlists can increase memory usage.
 
-<!-- IMAGE PLACEHOLDER: Flattened Netlist -->
+![flat](images/flattened.png)
 
-<!-- IMAGE PLACEHOLDER: Complete Netlist -->
+
+![complete](images/synthresult.png)
+
 
 ---
 
@@ -461,7 +465,8 @@ gtkwave tb_dff_asyncres.vcd
 
 The waveform can be used to observe how the asynchronous reset affects the flip-flop output.
 
-<!-- IMAGE PLACEHOLDER: DFF waveform -->
+![lib](images/dff.png)
+
 
 ---
 
@@ -570,7 +575,8 @@ ABC Technology Mapping
 Synthesized Netlist
 ```
 
-<!-- IMAGE PLACEHOLDER: Async FF Netlist -->
+![lib](images/dffsyn.png)
+
 
 ---
 
