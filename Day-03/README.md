@@ -92,7 +92,7 @@ the AND gate is unnecessary.
 Optimised:
 
 ```text
-A ───────── Y
+A ──────── Y
 ```
 
 This reduces the number of gates and therefore can reduce **area and power**.
