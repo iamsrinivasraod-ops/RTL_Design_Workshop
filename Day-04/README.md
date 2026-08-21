@@ -340,6 +340,22 @@ predictable synthesized hardware.
 
 ------------------------------------------------------------------------
 
+| Feature                  | RTL Simulation                                  | Gate-Level Simulation (GLS)                                              |
+| ------------------------ | ----------------------------------------------- | ------------------------------------------------------------------------ |
+| **Design Used**          | RTL Verilog code                                | Synthesized gate-level netlist                                           |
+| **Simulation Stage**     | Before synthesis                                | After synthesis                                                          |
+| **Main Purpose**         | Verify functional correctness of the RTL design | Verify that the synthesized netlist behaves as intended                  |
+| **Level of Abstraction** | High-level behavioral/register transfer level   | Low-level gate representation                                            |
+| **Speed**                | Generally faster                                | Generally slower due to detailed gate-level modeling                     |
+| **Timing Information**   | Usually ideal or abstract timing                | Can include gate delays and timing annotation                            |
+| **Design Under Test**    | Original RTL module                             | Synthesized netlist                                                      |
+| **Testbench**            | Testbench is applied to the RTL design          | Usually the same testbench can be applied to the netlist                 |
+| **Main Issues Detected** | Functional and logical errors in RTL            | Synthesis mismatches, initialization issues, and timing-related problems |
+| **Output Verification**  | Checks expected functional behavior             | Confirms that synthesized hardware matches the intended functionality    |
+| **Waveform Generation**  | Generates RTL signal waveforms                  | Generates gate-level signal waveforms                                    |
+| **Importance**           | First stage of functional verification          | Post-synthesis verification and additional confidence                    |
+
+
 # 9. Blocking Assignment Caveat
 
 The following example demonstrates an important caveat with blocking
