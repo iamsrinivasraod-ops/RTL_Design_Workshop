@@ -59,6 +59,9 @@ input `i1` is selected.
 This is a simple example of combinational RTL that can be synthesized
 into gate-level hardware.
 
+![RTL](images/ternwave.png)
+![Synth](images/ternlist.png)
+
 ------------------------------------------------------------------------
 
 ## 3. RTL Simulation
@@ -116,6 +119,8 @@ synthesis is successful and the RTL is written correctly.
 
 The same testbench can generally be used because the gate-level netlist
 represents the same logical functionality as the RTL design.
+
+![GLS](images/terngls.png)
 
 ### Why GLS?
 
@@ -309,6 +314,12 @@ A **synthesis mismatch** occurs when the behavior expected from RTL
 simulation does not match the behavior of the synthesized hardware or
 gate-level simulation.
 
+Here, the bad_mux.v file has different output for RTL and GLS 
+
+![RTL](images/badmux.png)
+![GLS](images/badmuxgls.png)
+
+
 This can happen because HDL is both a programming language and a
 hardware description language. The way statements are written affects
 the hardware inferred by synthesis.
@@ -402,6 +413,10 @@ d = (a | b) & c
 However, because of the order of blocking assignments in the example,
 `d` does not immediately use the newly calculated value of `x` within
 that procedural execution.
+
+![RTL](images/blockingcav.png)
+![GLS](images/blockingcavgls.png)
+
 
 ### Why is this a caveat?
 
