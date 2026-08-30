@@ -149,6 +149,11 @@ The simulation environment uses:
 * **GTKWave** for waveform visualization
 * A testbench to provide the required input stimulus
 
+The command to generate RTL simulation is:
+```text
+iverilog -o ./pre_synth_sim.out -DPRE_SYNTH_SIM src/module/testbench.v -I src/include -I src/module/
+```
+  
 The generated waveform is stored in VCD format and can be inspected using GTKWave.
 
 ![RTL Pre-Synthesis Waveform](presynth.png)
@@ -367,9 +372,9 @@ The post-synthesis simulation uses:
 The simulation was configured with:
 
 ```text
--DPOST_SYNTH_SIM
--DFUNCTIONAL
--DUNIT_DELAY=#1
+sudo iverilog -DPOST_SYNTH_SIM -I src/include/ -I
+../sky130RTLDesignAndSynthesisWorkshop/my_lib/verilog_model/ -I src/module/
+src/module/testbench.v
 ```
 
 The SKY130 Verilog models provide the functional definitions of the standard cells present in the synthesized netlist.
