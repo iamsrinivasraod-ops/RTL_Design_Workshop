@@ -48,6 +48,9 @@ VSD-Workshop
 ├── Day-03
 ├── Day-04
 ├── Day-05
+├── Day-06
+├── Day-07
+├── Labs-BabySoC
 ```
 
 ---
@@ -61,6 +64,8 @@ VSD-Workshop
 | Day 3 | Combinational & Sequential Logic Optimization | [Day 3](Day-03/) |
 | Day 4 | RTL Design, Synthesis and Gate-Level Simulation | [Day 4](Day-04/) |
 | Day 5 | IF-ELSE, CASE, and Looping Constructs | [Day 5](Day-05/) |
+| Day 6 | RTL to GDSII Flow, Synthesis and Gate-Level Simulation | [Day 6](Day-06/) |
+| Day 7 | OpenLane Physical Design: Core, Die, Floorplan, Placement| [Day 7](Day-07/) |
 
 *(The table will be updated as more sessions are completed.)*
 
@@ -77,6 +82,8 @@ VSD-Workshop
 | Waveform Viewer | GTKWave |
 | Language | Verilog HDL |
 | Version Control | Git & GitHub |
+| Openlane |
+| OpenSTA |
 
 ---
 
