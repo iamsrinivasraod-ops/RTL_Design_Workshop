@@ -1,6 +1,6 @@
-# Day 7 – Open-Source EDA, OpenLane and RTL-to-GDSII Flow
+# Day 6 – Open-Source EDA, OpenLane and RTL-to-GDSII Flow
 
-Day 7 focuses on the complete **ASIC design flow**, starting from RTL design and ending with the final **GDSII layout**. The session covers Open-Source EDA tools, OpenLane, semiconductor foundries, PDKs, SkyWater Technology, the SKY130 130nm technology, PicoRV32, and the complete RTL-to-GDSII implementation flow.
+Day 6 focuses on the complete **ASIC design flow**, starting from RTL design and ending with the final **GDSII layout**. The session covers Open-Source EDA tools, OpenLane, semiconductor foundries, PDKs, SkyWater Technology, the SKY130 130nm technology, PicoRV32, and the complete RTL-to-GDSII implementation flow.
 
 ---
 
@@ -783,6 +783,6 @@ Day 6 demonstrated the complete **RTL-to-GDSII ASIC design flow** using open-sou
 
 The experiment provided an understanding of how RTL code is transformed into actual physical structures such as standard cells, clock networks, metal interconnects, and vias, connecting digital design concepts with real semiconductor physical implementation.
 
-[FLOW](flow.png)
+![FLOW](flow.png)
 
 ---
