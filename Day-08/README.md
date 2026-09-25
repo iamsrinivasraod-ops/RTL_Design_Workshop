@@ -19,6 +19,8 @@ A CMOS fabrication process creates NMOS and PMOS transistors on a silicon wafer 
 13. **Higher metal layers** – Additional dielectric, vias and metal layers are formed for routing.
 14. **Passivation and final processing** – A protective layer is added and openings are made for the required external connections.
 
+![final cmos](images/16cmos.png)
+
 ### Important fabrication concepts
 
 - **LDD:** Lightly Doped Drain reduces the electric field near the drain and helps reduce hot-carrier damage.
@@ -47,7 +49,65 @@ LEF does not contain the complete detailed transistor layout. The detailed geome
 
 ---
 
-# 3. Changing Pin Spacing in OpenLane for PicoRV32A
+# 3. SPICE Deck Simulation
+
+![Screenshot](images/spicedeck.png)
+
+A SPICE deck is a text file that describes the circuit, transistor models, input conditions, and simulation commands required by a SPICE simulator.
+
+For a CMOS inverter, the SPICE deck defines the PMOS and NMOS using their W/L dimensions, connects the supply and input voltages, and adds the output load capacitance.
+
+Example:
+
+M1 out in vdd vdd pmos W=0.375u L=0.25u
+M2 out in 0 0 nmos W=0.375u L=0.25u
+
+Cload out 0 10f
+
+Vdd vdd 0 2.5
+Vin in 0 2.5
+
+.op
+.dc Vin 0 2.5 0.05
+
+.include tsmc_025um_model.mod
+.LIB "tsmc_025um_model.mod" CMOS_MODELS
+
+.end
+Important parts
+M1 → PMOS transistor.
+M2 → NMOS transistor.
+W and L → transistor width and channel length.
+Cload → load capacitance connected to the output.
+Vdd → 2.5 V supply.
+Vin → input voltage source.
+.op → calculates the DC operating point.
+.dc → performs a DC sweep of the input voltage from 0 to 2.5 V in 0.05 V steps.
+.include / .LIB → loads the transistor model library containing the electrical characteristics of the MOSFETs.
+.end → marks the end of the SPICE deck.
+
+# 4. Changing Pin Spacing in OpenLane for PicoRV32A
+
+Opening the PicoRV32A Layout in Magic
+
+Magic was opened using the SKY130 technology file:
+
+```bash
+magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech
+```
+
+The LEF and DEF were then read:
+
+```tcl
+lef read ../../tmp/merged.lef
+def read picorv32a.floorplan.def
+```
+
+The LEF provides the abstract cell/library information, while the DEF contains the physical design information such as placement and routing.
+
+---
+
+![command](images/changedist.png)
 
 For the PicoRV32A design, pin placement can be changed through the OpenLane configuration.
 
@@ -67,19 +127,13 @@ set ::env(FP_IO_MODE) 2
 
 Other floorplanning parameters such as die/core dimensions and utilization also affect the physical distances available for routing.
 
-The basic idea is:
+Looking at the layers now we can clearly see that the pins have changed from being equally distanced to being packed closer together.
 
-```text
-Larger available perimeter/core area
-        ↓
-More space for I/O distribution
-        ↓
-Pin spacing and routing distances can change
-```
+![spacing changed](images/pinchange.png)
 
----
+# 5. W/L Ratio of PMOS and NMOS
 
-# 4. W/L Ratio of PMOS and NMOS
+![waveforms of different w/l](images/invwave.png)
 
 The transistor strength is strongly related to its **W/L ratio**:
 
@@ -115,6 +169,8 @@ The PMOS is slightly wider because hole mobility is lower than electron mobility
 
 ### Effect on switching
 
+![switching](images/switching.png)
+
 The switching point of a CMOS inverter depends on the relative strengths of PMOS and NMOS.
 
 - **Increase NMOS W/L:** NMOS becomes stronger → switching point tends to move lower.
@@ -123,17 +179,23 @@ The switching point of a CMOS inverter depends on the relative strengths of PMOS
 
 The basic current-strength relationship is:
 
-\[
-\beta = \mu C_{ox}\frac{W}{L}
-\]
+β = μCₒₓ(W/L)
 
 Since electron mobility is normally higher than hole mobility, PMOS is often designed with a larger W/L than NMOS.
 
 ---
 
-# 5. CMOS Inverter Layers in Magic
+# 6. CMOS Inverter Layers in Magic
+
+For the standard-cell design work, the inverter layout was opened using:
+
+```bash
+magic -T sky130.tech sky130_inv.mag &
+```
 
 A CMOS inverter contains one PMOS and one NMOS.
+
+![Screenshot](images/cmosinverter.png)
 
 ### Important layers to identify
 
@@ -166,44 +228,7 @@ When input = 1, PMOS is OFF and NMOS is ON, so output is LOW.
 
 ---
 
-# 6. Opening the PicoRV32A Layout in Magic
-
-Magic was opened using the SKY130 technology file:
-
-```bash
-magic -T /home/vsduser/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech
-```
-
-The LEF and DEF were then read:
-
-```tcl
-lef read ../../tmp/merged.lef
-def read picorv32a.floorplan.def
-```
-
-The LEF provides the abstract cell/library information, while the DEF contains the physical design information such as placement and routing.
-
----
-
-# 7. Opening Metal 3 in Magic
-
-In SKY130, the third routing metal layer is:
-
-```text
-met3
-```
-
-Metal layers are used mainly for routing/interconnection between different cells and circuit regions. In Magic, the layer can be selected using the layer-selection commands or the appropriate layer information shown by the Magic technology file.
-
----
-
-# 8. CMOS Inverter Layout and SPICE Extraction
-
-For the standard-cell design work, the inverter layout was opened using:
-
-```bash
-magic -T sky130.tech sky130_inv.mag &
-```
+# 7. CMOS Inverter Layout and SPICE Extraction
 
 Inside the Magic window, extraction was performed using:
 
@@ -219,9 +244,11 @@ The generated SPICE file was then edited for ngspice simulation.
 
 ---
 
-# 9. SPICE File Used for Characterization
+# 8. SPICE File Used for Characterization
 
 The extracted inverter was represented approximately as:
+
+The previous step creates a file named sky130_inv.spice, we edit the file to suitable condition as follows:
 
 ```spice
 * SPICE3 file created from sky130_inv.ext - technology: sky130A
@@ -259,10 +286,16 @@ The inverter was simulated with:
 ```bash
 ngspice sky130_inv.spice
 ```
+![Screenshot](images/ngpsice.png)
+To get the output waveform we use
+
+```bash
+plot y vs time a
+```
 
 ---
 
-# 10. CMOS Inverter Output Waveform
+# 9. CMOS Inverter Output Waveform
 
 The input is a pulse waveform from 0 V to 3.3 V.
 
@@ -274,11 +307,13 @@ Input:    LOW ─── HIGH ─── LOW
 Output:   HIGH ─── LOW ─── HIGH
 ```
 
+![Screenshot](images/invout.png)
+
 The output does not switch instantaneously because the transistor resistance and parasitic/load capacitances produce a finite charging and discharging time.
 
 ---
 
-# 11. Rise Time
+# 10. Rise Time
 
 Rise time is the time required for the output to rise from a lower percentage to a higher percentage of its final voltage.
 
@@ -312,13 +347,11 @@ Therefore:
 t_r = 2.20466ns - 2.16845ns
 \]
 
-\[
-\boxed{t_r \approx 0.03621ns = 36.21ps}
-\]
+**Rise time:** `tr ≈ 0.03621 ns = 36.21 ps`
 
 ---
 
-# 12. Propagation Delay
+# 11. Propagation Delay
 
 Propagation delay is measured between the 50% voltage points of the input and output.
 
@@ -346,15 +379,32 @@ The propagation delay is the absolute difference between the two times:
 t_p = |2.1866ns - 2.14997ns|
 \]
 
-\[
-\boxed{t_p \approx 0.03663ns = 36.63ps}
-\]
+**Propagation delay:** `tp ≈ 0.03663 ns = 36.63 ps`
 
 The exact delay can vary slightly depending on which input/output transition is selected and the cursor precision.
 
 ---
 
-# 13. Important Viva Points
+<table>
+<tr>
+<td><img src="images/risetime.png" width="400"></td>
+<td><img src="images/propdelay.png" width="400"></td>
+</tr>
+</table>
+
+# 12. Opening Metal 3 in Magic
+
+In SKY130, the third routing metal layer is:
+
+```text
+met3.mag
+```
+
+Metal layers are used mainly for routing/interconnection between different cells and circuit regions. In Magic, the layer can be selected using the layer-selection commands or the appropriate layer information shown by the Magic technology file.
+
+![Screenshot](images/metal3.png)
+
+# 13. Key Takeaways
 
 - **Magic** is used for layout editing, visualization and extraction.
 - **LEF** contains abstract physical library information.
