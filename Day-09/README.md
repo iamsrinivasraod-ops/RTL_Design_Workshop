@@ -71,8 +71,6 @@ Using a different buffer size or type may be necessary when the loads are differ
 
 ![Power-Aware CTS](images/ctspowaware.png)
 
-![Power-Aware CTS — Additional View](images/ctspowaware1.png)
-
 Clock networks are one of the major sources of dynamic power because the clock switches continuously and drives many sequential elements.
 
 Power-aware Clock Tree Synthesis considers both timing and power while constructing the clock network.
@@ -169,14 +167,10 @@ Delay tables allow the STA engine to estimate the propagation delay of a standar
 - **Buffer delay** — delay introduced by clock/data buffering.
 - **Slew degradation** — change in transition quality as a signal propagates through logic.
 
-### Delay Table — Buffering Level 1
+### Delay Table — Buffering Level 1 & 2
 
-> **Image Placeholder:** `Delay Table Buffering Level 1` *(image not present in the provided Day-09 image list)*
+![Power-Aware CTS — Additional View](images/ctspowaware1.png)
 
-
-### Delay Table — Buffering Level 2
-
-> **Image Placeholder:** `Delay Table Buffering Level 2` *(image not present in the provided Day-09 image list)*
 
 
 ### Delay Components
@@ -216,11 +210,6 @@ If data arrives too late, a **setup violation** occurs.
 ![Setup Analysis — Real Clock](images/realclock.png)
 
 
-### Setup Timing Concept
-
-![Setup Time](images/settime.png)
-
-
 ---
 
 ## 2.2 Hold Timing
@@ -237,11 +226,6 @@ If new data reaches the capture flip-flop too early, a **hold violation** can oc
 ### Hold Analysis with Real Clock
 
 ![Hold Analysis — Real Clock](images/realclockh.png)
-
-
-### Hold Timing Concept
-
-> **Image Placeholder:** `Hold Time` *(image not present in the provided Day-09 image list)*
 
 
 ---
@@ -278,7 +262,7 @@ The primary objectives of CTS include:
 
 ## 3.1 H-Tree Clock Distribution
 
-> **Image Placeholder:** `H-Tree Clock Distribution` *(image not present in the provided Day-09 image list)*
+![H-Tree Clock Distribution](images/htree.png)
 
 An H-tree is a symmetric clock-distribution structure intended to provide similar path lengths to different branches.
 
@@ -287,7 +271,7 @@ An H-tree is a symmetric clock-distribution structure intended to provide simila
 
 ## 3.2 Clock Buffers
 
-> **Image Placeholder:** `Clock Buffer` *(image not present in the provided Day-09 image list)*
+![Clock Buffers](images/cbuf.png)
 
 Clock buffers are inserted to drive the capacitive load of the clock network and maintain acceptable signal transition characteristics.
 
@@ -296,7 +280,7 @@ Clock buffers are inserted to drive the capacitive load of the clock network and
 
 ## 3.3 Clock Net Shielding
 
-> **Image Placeholder:** `Clock Net Shielding` *(image not present in the provided Day-09 image list)*
+![Clock Shielding](images/shield.png)
 
 Clock nets are sensitive to coupling and noise. Shielding can be used to reduce unwanted capacitive coupling from neighboring signal wires.
 
@@ -304,8 +288,6 @@ Clock nets are sensitive to coupling and noise. Shielding can be used to reduce 
 ---
 
 ## 3.4 CTS Terminal / Clock Network
-
-> **Image Placeholder:** `CTS Terminal / Clock Network` *(image not present in the provided Day-09 image list)*
 
 The resulting clock network connects the clock source to the required sequential elements through the synthesized clock distribution structure.
 
@@ -325,10 +307,6 @@ The physical design stage therefore considers:
 - Interconnect length
 - Parasitic effects
 
-### Floorplan / Terminal View
-
-> **Image Placeholder:** `Floorplan / Terminal View` *(image not present in the provided Day-09 image list)*
-
 
 ### Layout Grid
 
@@ -339,23 +317,6 @@ The physical design stage therefore considers:
 
 ![Placement](images/placement.png)
 
-
-### Placement — Additional View
-
-> **Image Placeholder:** `Placement — Additional View` *(image not present in the provided Day-09 image list)*
-
-
-### Expanded Placement View
-
-> **Image Placeholder:** `Expanded Placement View` *(image not present in the provided Day-09 image list)*
-
-
-### Placement Terminal View
-
-> **Image Placeholder:** `Placement Terminal View` *(image not present in the provided Day-09 image list)*
-
-
----
 
 # 5. Post-CTS Timing Effects
 
