@@ -171,6 +171,43 @@ Delay tables allow the STA engine to estimate the propagation delay of a standar
 
 ![Power-Aware CTS — Additional View](images/ctspowaware1.png)
 
+## Inverter Recognition and Slack Improvement in PicoRV32A
+
+After integrating the inverter into the PicoRV32A design, synthesis was performed using Yosys and the SKY130 standard-cell library. During synthesis, the generated cell statistics showed the inverter cell `sky130_vsdinv` with **1554 instances**, confirming that the inverter was recognized and mapped as part of the synthesized PicoRV32A design.
+
+![Inverter recognized during synthesis](images/synthwithinv.png)
+
+The initial timing analysis showed a **negative slack of -23.89 ns**, indicating a timing violation. The report marked this path as `slack (VIOLATED)`.
+
+![Initial slack violation](images/slackviolated.png)
+
+To improve the timing, the synthesis strategy was changed to prioritize delay optimization using:
+
+```tcl
+set ::env(SYNTH_STRATEGY) "DELAY 0"
+```
+The DELAY strategy directs synthesis toward timing/delay optimization instead of primarily optimizing for area.
+
+After changing the synthesis strategy, the design was synthesized again and the timing report was checked. The resulting slack improved to +9.12 ns, and the report showed slack (MET), meaning the reported timing path was no longer violating the constraint.
+
+![Initial slack violation](images/slackreduced.png)
+
+Updated config.tcl
+
+![new config](images/newconfig.png)
+
+The configuration used for the design contains the PicoRV32A source files, clock settings, SKY130 library files, and additional LEF files. The synthesis strategy was added to improve timing.
+
+Overall changes:
+before:
+Chip area for module '\picorv32a': 147712.918400
+tns -711.59
+wns -23.89
+
+after:
+Chip area for module '\picorv32a': 196832.528000
+tns 0.00
+wns 0.00
 
 
 ### Delay Components
