@@ -29,11 +29,22 @@ Everything has been organized day-wise to make navigation simple.
 
 - Learn Linux commands required for VLSI workflows
 - Understand Digital Design concepts
-- Write Verilog HDL modules
+- Write and analyze Verilog HDL modules
 - Simulate designs using Icarus Verilog
-- Generate waveforms using GTKWave
-- Learn the ASIC Design Flow
-- Document the complete learning process
+- Analyze waveforms using GTKWave
+- Understand the RTL-to-GDSII ASIC design flow
+- Learn RTL synthesis and Gate-Level Simulation
+- Understand standard-cell libraries and timing concepts
+- Perform floorplanning and placement
+- Understand Clock Tree Synthesis (CTS)
+- Analyze setup and hold timing
+- Understand slack, WNS and TNS
+- Study clock skew and timing optimization
+- Understand global and detailed routing
+- Study TritonRoute and routing connectivity
+- Understand Power Distribution Networks (PDN)
+- Perform Design Rule Checking (DRC)
+- Study post-route parasitic extraction and timing analysis
 
 ---
 
@@ -50,6 +61,9 @@ VSD-Workshop
 ├── Day-05
 ├── Day-06
 ├── Day-07
+├── Day-08
+├── Day-09
+├── Day-10
 ├── Labs-BabySoC
 ```
 
@@ -57,33 +71,46 @@ VSD-Workshop
 
 # Table of Contents
 
-| Day | Topics | Link |
-|------|---------|------|
-| Day 1 | Linux Setup & Virtual Machine Installation | [Day 1](Day-01/) |
-| Day 2 | Timing Libraries, Synthesis Approaches & Flip-Flop Coding Styles | [Day 2](Day-02/) |
-| Day 3 | Combinational & Sequential Logic Optimization | [Day 3](Day-03/) |
-| Day 4 | RTL Design, Synthesis and Gate-Level Simulation | [Day 4](Day-04/) |
-| Day 5 | IF-ELSE, CASE, and Looping Constructs | [Day 5](Day-05/) |
-| Day 6 | RTL to GDSII Flow, Synthesis and Gate-Level Simulation | [Day 6](Day-06/) |
-| Day 7 | OpenLane Physical Design: Core, Die, Floorplan, Placement| [Day 7](Day-07/) |
 
+## Workshop Progress
+
+This is the main part that needs updating based on what you've completed so far:
+
+# Workshop Progress
+
+| **Day** | **Topic** | **Link** |
+|---|---|---|
+| Day 1 | Linux Setup & Virtual Machine Installation | [Day 1](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-01) |
+| Day 2 | Timing Libraries, Synthesis Approaches & Flip-Flop Coding Styles | [Day 2](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-02) |
+| Day 3 | Combinational & Sequential Logic Optimization | [Day 3](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-03) |
+| Day 4 | RTL Design, Synthesis and Gate-Level Simulation | [Day 4](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-04) |
+| Day 5 | IF-ELSE, CASE and Looping Constructs | [Day 5](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-05) |
+| Day 6 | RTL-to-GDSII Flow, Synthesis and Gate-Level Simulation | [Day 6](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-06) |
+| Day 7 | OpenLane Physical Design: Core, Die, Floorplan and Placement | [Day 7](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-07) |
+| Day 8 | Physical Design and Timing Analysis | [Day 8](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-08) |
+| Day 9 | Clock Tree Synthesis, Timing Analysis and Post-CTS Optimization | [Day 9](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-09) |
+| Day 10 | Routing, TritonRoute, Power Distribution, DRC and Post-Route Analysis | [Day 10](https://github.com/iamsrinivasraod-ops/RTL_Design_Workshop/tree/main/Day-10) |
 *(The table will be updated as more sessions are completed.)*
 
 ---
 
 # Development Environment
 
-| Component | Details |
-|------------|---------|
+| **Component** | **Details** |
+|---|---|
 | Operating System | Linux (Virtual Machine) |
 | Virtualization | Oracle VirtualBox |
 | Workshop | VLSI System Design (VSD) |
+| Language | Verilog HDL |
 | Simulator | Icarus Verilog |
 | Waveform Viewer | GTKWave |
-| Language | Verilog HDL |
+| Synthesis | Yosys |
+| Physical Design | OpenLane / OpenROAD |
+| Timing Analysis | OpenSTA |
+| Routing | TritonRoute |
+| Process Technology | SKY130 |
+| Container | Docker |
 | Version Control | Git & GitHub |
-| Openlane |
-| OpenSTA |
 
 ---
 
@@ -103,6 +130,8 @@ Each day's folder contains:
 
 # Tools Used
 
+# Tools Used
+
 - Oracle VirtualBox
 - Linux
 - Bash Shell
@@ -110,7 +139,13 @@ Each day's folder contains:
 - GitHub
 - Icarus Verilog
 - GTKWave
-
+- Yosys
+- OpenLane
+- OpenROAD
+- OpenSTA
+- TritonRoute
+- Docker
+- SKY130 PDK
 
 # Screenshots
 
