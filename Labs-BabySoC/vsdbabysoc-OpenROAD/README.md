@@ -99,7 +99,7 @@ Floorplanning converts a logical design into a physical planning problem. The di
 
 ### Floorplan timing report
 
-![Floorplan timing report showing worst slack and critical-path information](images/floorplanreport.png)
+![Floorplan timing report showing worst slack and critical-path information](floorplanreport.png)
 
 The floorplan report shows:
 
@@ -117,7 +117,7 @@ The timing-path excerpt also shows a **12.00 ns clock period**, a **10.24 ns dat
 
 ### Floorplan power report
 
-![Floorplan power report showing sequential and combinational power](images/floorplanpower.png)
+![Floorplan power report showing sequential and combinational power](floorplanpower.png)
 
 The reported floorplan power is approximately **5.67 mW**, divided as follows:
 
@@ -142,7 +142,7 @@ The screenshots show the design at the **`3_place`** stage in OpenROAD, includin
 
 ### Inspecting the PLL instance
 
-![PLL instance viewed within the placement-stage physical design](images/pll%20instance.png)
+![PLL instance viewed within the placement-stage physical design](pll%20instance.png)
 
 This close-up is useful because it makes the distinction between a named logical instance and its **actual physical footprint** visible. The instance is shown within the larger design context, surrounded by metal shapes and physical-design infrastructure.
 
@@ -177,13 +177,13 @@ The central objective is not simply to connect every clock pin: the clock networ
 
 ### Clock-tree layout inspection
 
-![Clock tree synthesis close-up showing physical interconnect and cells](images/ctscloser.png)
+![Clock tree synthesis close-up showing physical interconnect and cells](ctscloser.png)
 
 The `4_cts` OpenROAD view shows a dense physical region containing standard cells and multiple routing layers. The visible `clkbuf` label is particularly useful when discussing clock-buffer insertion and the transition from idealized clock assumptions to a physical clock distribution network.
 
 ### CTS timing and power results
 
-![CTS critical-path delay, slack and power report](images/ctsreport.png)
+![CTS critical-path delay, slack and power report](ctsreport.png)
 
 The terminal report provides the following stage-specific values:
 
@@ -228,13 +228,13 @@ The OpenROAD screenshots show the **`5_route`** stage with signal-routing shapes
 
 ### Routed design overview
 
-![Routed VSDBabySoC physical layout in OpenROAD](images/routing.png)
+![Routed VSDBabySoC physical layout in OpenROAD](routing.png)
 
 The design view contains multiple visible metal layers and a dense collection of signal interconnections. The horizontal and vertical wiring patterns illustrate how interconnect must be distributed across available layers rather than placed on a single plane.
 
 ### Routed interconnect close-up
 
-![Detailed view of routed metal interconnect and vias](images/routingcloser.png)
+![Detailed view of routed metal interconnect and vias](routingcloser.png)
 
 The closer view highlights dense interconnect in the central implementation region. This is the point at which a logical netlist becomes a much more realistic physical connectivity problem: wires occupy space, require vias, and contribute resistance and capacitance.
 
@@ -259,13 +259,13 @@ OpenROAD provides visualization tools to help interpret the implementation beyon
 
 ### Heat-map overview
 
-![Heat-map view of the VSDBabySoC design](images/heatmap.png)
+![Heat-map view of the VSDBabySoC design](heatmap.png)
 
 The overview shows a localized concentration of colored regions inside the larger physical boundary. It makes it easier to see that design activity and resource demand are not necessarily uniform across the floorplan.
 
 ### Heat-map close-up
 
-![Zoomed-in heat-map view of the implemented design](images/heatmapcloser.png)
+![Zoomed-in heat-map view of the implemented design](heatmapcloser.png)
 
 The close-up reveals the local distribution more clearly. Such views can help guide investigation into high-density regions, possible congestion hot spots, or other spatially varying implementation metrics.
 
