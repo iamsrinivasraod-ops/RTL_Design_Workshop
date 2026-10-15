@@ -6,7 +6,7 @@ Throughout these ten days, I gained valuable hands-on experience with Verilog HD
 
 ### 🎬 Workshop Journey — Video Presentation
 
-▶️ **[Watch My 10-Day VLSI Workshop Journey](https://drive.google.com/file/d/1dly-p2rOMU56HO1gLhVu8queVVHjW8_0/view?usp=sharing)**
+▶️ **[Workshop Final Video Drive Link](https://drive.google.com/file/d/1dly-p2rOMU56HO1gLhVu8queVVHjW8_0/view?usp=sharing)**
 
 ### 🙏 A Note of Gratitude
 
