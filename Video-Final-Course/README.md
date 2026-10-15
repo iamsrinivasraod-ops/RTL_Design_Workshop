@@ -6,7 +6,7 @@ Throughout these ten days, I gained valuable hands-on experience with Verilog HD
 
 ### 🎬 Workshop Journey — Video Presentation
 
-▶️ **[Workshop Final Video Drive Link]((https://drive.google.com/file/d/1dly-p2rOMU56HO1gLhVu8queVVHjW8_0/view?usp=sharing))**
+▶️ **[Watch My 10-Day VLSI Workshop Journey](https://drive.google.com/file/d/1dly-p2rOMU56HO1gLhVu8queVVHjW8_0/view?usp=sharing)**
 
 ### 🙏 A Note of Gratitude
 
@@ -17,5 +17,3 @@ I am equally thankful to our trainer, **Mr. Ankit Mawle Sir**, for his patient g
 What began as an introduction to VLSI tools turned into an incredibly rewarding learning experience. This workshop has not only strengthened my technical foundation but also inspired me to explore the field of semiconductor design with greater curiosity and dedication.
 
 **Thank you for this invaluable opportunity, the knowledge shared, and the motivation to keep learning and growing.**
-
-
