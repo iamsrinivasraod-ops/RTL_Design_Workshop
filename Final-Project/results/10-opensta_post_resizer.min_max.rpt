@@ -1,0 +1,243 @@
+Startpoint: rst_n (input port clocked by clk)
+Endpoint: _7132_ (removal check against rising-edge clock clk)
+Path Group: **async_default**
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          4.00    4.00 ^ input external delay
+                  0.01    0.00    4.00 ^ rst_n (in)
+     1    0.00                           rst_n (net)
+                  0.01    0.00    4.00 ^ input125/A (sky130_fd_sc_hd__buf_6)
+                  0.07    0.09    4.09 ^ input125/X (sky130_fd_sc_hd__buf_6)
+    11    0.04                           net125 (net)
+                  0.07    0.00    4.09 ^ _7132_/RESET_B (sky130_fd_sc_hd__dfrtp_2)
+                                  4.09   data arrival time
+
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00   clock reconvergence pessimism
+                                  0.00 ^ _7132_/CLK (sky130_fd_sc_hd__dfrtp_2)
+                          0.20    0.20   library removal time
+                                  0.20   data required time
+-----------------------------------------------------------------------------
+                                  0.20   data required time
+                                 -4.09   data arrival time
+-----------------------------------------------------------------------------
+                                  3.89   slack (MET)
+
+
+Startpoint: _7088_ (rising edge-triggered flip-flop clocked by clk)
+Endpoint: _7088_ (rising edge-triggered flip-flop clocked by clk)
+Path Group: clk
+Path Type: min
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                  0.00    0.00    0.00 ^ _7088_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                  0.04    0.18    0.18 ^ _7088_/Q (sky130_fd_sc_hd__dfxtp_1)
+     2    0.00                           u_events.memory[6][0] (net)
+                  0.04    0.00    0.18 ^ _5717_/A1 (sky130_fd_sc_hd__a21bo_1)
+                  0.02    0.06    0.24 ^ _5717_/X (sky130_fd_sc_hd__a21bo_1)
+     1    0.00                           _0422_ (net)
+                  0.02    0.00    0.24 ^ _7088_/D (sky130_fd_sc_hd__dfxtp_1)
+                                  0.24   data arrival time
+
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          0.00    0.00   clock reconvergence pessimism
+                                  0.00 ^ _7088_/CLK (sky130_fd_sc_hd__dfxtp_1)
+                         -0.02   -0.02   library hold time
+                                 -0.02   data required time
+-----------------------------------------------------------------------------
+                                 -0.02   data required time
+                                 -0.24   data arrival time
+-----------------------------------------------------------------------------
+                                  0.26   slack (MET)
+
+
+Startpoint: rst_n (input port clocked by clk)
+Endpoint: _7322_ (recovery check against rising-edge clock clk)
+Path Group: **async_default**
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          4.00    4.00 ^ input external delay
+                  0.03    0.01    4.01 ^ rst_n (in)
+     1    0.00                           rst_n (net)
+                  0.03    0.00    4.01 ^ input125/A (sky130_fd_sc_hd__buf_6)
+                  0.14    0.22    4.23 ^ input125/X (sky130_fd_sc_hd__buf_6)
+    11    0.04                           net125 (net)
+                  0.14    0.00    4.23 ^ repeater218/A (sky130_fd_sc_hd__buf_8)
+                  0.14    0.27    4.49 ^ repeater218/X (sky130_fd_sc_hd__buf_8)
+    14    0.05                           net218 (net)
+                  0.14    0.00    4.49 ^ repeater217/A (sky130_fd_sc_hd__buf_8)
+                  0.16    0.28    4.77 ^ repeater217/X (sky130_fd_sc_hd__buf_8)
+    15    0.06                           net217 (net)
+                  0.16    0.00    4.77 ^ repeater215/A (sky130_fd_sc_hd__buf_8)
+                  0.17    0.29    5.06 ^ repeater215/X (sky130_fd_sc_hd__buf_8)
+    16    0.06                           net215 (net)
+                  0.17    0.00    5.06 ^ repeater214/A (sky130_fd_sc_hd__buf_8)
+                  0.16    0.29    5.35 ^ repeater214/X (sky130_fd_sc_hd__buf_8)
+    16    0.06                           net214 (net)
+                  0.16    0.00    5.35 ^ repeater213/A (sky130_fd_sc_hd__buf_8)
+                  0.16    0.29    5.63 ^ repeater213/X (sky130_fd_sc_hd__buf_8)
+    17    0.06                           net213 (net)
+                  0.16    0.00    5.63 ^ repeater212/A (sky130_fd_sc_hd__buf_8)
+                  0.17    0.29    5.93 ^ repeater212/X (sky130_fd_sc_hd__buf_8)
+    16    0.06                           net212 (net)
+                  0.17    0.00    5.93 ^ repeater211/A (sky130_fd_sc_hd__buf_8)
+                  0.16    0.29    6.22 ^ repeater211/X (sky130_fd_sc_hd__buf_8)
+    17    0.06                           net211 (net)
+                  0.16    0.00    6.22 ^ repeater209/A (sky130_fd_sc_hd__buf_8)
+                  0.17    0.30    6.52 ^ repeater209/X (sky130_fd_sc_hd__buf_8)
+    18    0.06                           net209 (net)
+                  0.17    0.00    6.52 ^ repeater208/A (sky130_fd_sc_hd__buf_8)
+                  0.16    0.29    6.81 ^ repeater208/X (sky130_fd_sc_hd__buf_8)
+    17    0.05                           net208 (net)
+                  0.16    0.00    6.81 ^ _7322_/SET_B (sky130_fd_sc_hd__dfstp_1)
+                                  6.81   data arrival time
+
+                  0.00   20.00   20.00   clock clk (rise edge)
+                          0.00   20.00   clock network delay (ideal)
+                          0.00   20.00   clock reconvergence pessimism
+                                 20.00 ^ _7322_/CLK (sky130_fd_sc_hd__dfstp_1)
+                          0.24   20.24   library recovery time
+                                 20.24   data required time
+-----------------------------------------------------------------------------
+                                 20.24   data required time
+                                 -6.81   data arrival time
+-----------------------------------------------------------------------------
+                                 13.43   slack (MET)
+
+
+Startpoint: cell2_mv[15] (input port clocked by clk)
+Endpoint: bus_rdata[8] (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+Fanout     Cap    Slew   Delay    Time   Description
+-----------------------------------------------------------------------------
+                  0.00    0.00    0.00   clock clk (rise edge)
+                          0.00    0.00   clock network delay (ideal)
+                          4.00    4.00 ^ input external delay
+                  0.02    0.01    4.01 ^ cell2_mv[15] (in)
+     1    0.00                           cell2_mv[15] (net)
+                  0.02    0.00    4.01 ^ input81/A (sky130_fd_sc_hd__buf_4)
+                  0.09    0.20    4.20 ^ input81/X (sky130_fd_sc_hd__buf_4)
+     4    0.01                           net81 (net)
+                  0.09    0.00    4.20 ^ _3647_/A (sky130_fd_sc_hd__clkbuf_4)
+                  0.14    0.30    4.51 ^ _3647_/X (sky130_fd_sc_hd__clkbuf_4)
+     5    0.02                           _0839_ (net)
+                  0.14    0.00    4.51 ^ _3648_/A (sky130_fd_sc_hd__inv_2)
+                  0.10    0.14    4.65 v _3648_/Y (sky130_fd_sc_hd__inv_2)
+     5    0.02                           _0029_ (net)
+                  0.10    0.00    4.65 v _5974_/A1 (sky130_fd_sc_hd__a22oi_4)
+                  0.28    0.33    4.98 ^ _5974_/Y (sky130_fd_sc_hd__a22oi_4)
+     2    0.01                           _2727_ (net)
+                  0.28    0.00    4.98 ^ _5975_/C1 (sky130_fd_sc_hd__o221ai_2)
+                  0.13    0.24    5.22 v _5975_/Y (sky130_fd_sc_hd__o221ai_2)
+     1    0.00                           _2728_ (net)
+                  0.13    0.00    5.22 v _5982_/C (sky130_fd_sc_hd__or4_4)
+                  0.16    0.99    6.21 v _5982_/X (sky130_fd_sc_hd__or4_4)
+     2    0.01                           _2735_ (net)
+                  0.16    0.00    6.21 v _5983_/B (sky130_fd_sc_hd__nor2_1)
+                  0.18    0.21    6.42 ^ _5983_/Y (sky130_fd_sc_hd__nor2_1)
+     1    0.00                           _2736_ (net)
+                  0.18    0.00    6.42 ^ _5984_/B1 (sky130_fd_sc_hd__o21ai_2)
+                  0.12    0.19    6.61 v _5984_/Y (sky130_fd_sc_hd__o21ai_2)
+     2    0.01                           _2737_ (net)
+                  0.12    0.00    6.61 v _5996_/A1 (sky130_fd_sc_hd__a21oi_4)
+                  0.39    0.40    7.01 ^ _5996_/Y (sky130_fd_sc_hd__a21oi_4)
+     9    0.03                           _0032_ (net)
+                  0.39    0.00    7.01 ^ _6840_/S (sky130_fd_sc_hd__mux2_1)
+                  0.14    0.83    7.84 v _6840_/X (sky130_fd_sc_hd__mux2_1)
+     3    0.00                           _0117_ (net)
+                  0.14    0.00    7.84 v _6004_/B (sky130_fd_sc_hd__and2b_1)
+                  0.06    0.34    8.19 v _6004_/X (sky130_fd_sc_hd__and2b_1)
+     1    0.00                           _2755_ (net)
+                  0.06    0.00    8.19 v _6005_/B (sky130_fd_sc_hd__or3b_4)
+                  0.13    0.74    8.92 v _6005_/X (sky130_fd_sc_hd__or3b_4)
+     1    0.01                           _2756_ (net)
+                  0.13    0.00    8.92 v _6010_/A1 (sky130_fd_sc_hd__a311oi_4)
+                  0.28    0.34    9.26 ^ _6010_/Y (sky130_fd_sc_hd__a311oi_4)
+     1    0.00                           _2761_ (net)
+                  0.28    0.00    9.26 ^ _6013_/A3 (sky130_fd_sc_hd__o311a_1)
+                  0.18    0.44    9.70 ^ _6013_/X (sky130_fd_sc_hd__o311a_1)
+     1    0.01                           _2764_ (net)
+                  0.18    0.00    9.70 ^ _6017_/A4 (sky130_fd_sc_hd__o41ai_4)
+                  0.13    0.16    9.86 v _6017_/Y (sky130_fd_sc_hd__o41ai_4)
+     1    0.01                           _2768_ (net)
+                  0.13    0.00    9.86 v _6042_/A1 (sky130_fd_sc_hd__a32oi_4)
+                  0.51    0.50   10.36 ^ _6042_/Y (sky130_fd_sc_hd__a32oi_4)
+     6    0.03                           _0124_ (net)
+                  0.51    0.00   10.36 ^ repeater200/A (sky130_fd_sc_hd__buf_6)
+                  0.17    0.42   10.79 ^ repeater200/X (sky130_fd_sc_hd__buf_6)
+    11    0.05                           net200 (net)
+                  0.17    0.00   10.79 ^ _6816_/S (sky130_fd_sc_hd__mux2_2)
+                  0.14    0.77   11.56 v _6816_/X (sky130_fd_sc_hd__mux2_2)
+     3    0.01                           _0139_ (net)
+                  0.14    0.00   11.56 v _5239_/A (sky130_fd_sc_hd__buf_2)
+                  0.08    0.30   11.86 v _5239_/X (sky130_fd_sc_hd__buf_2)
+     5    0.01                           _2218_ (net)
+                  0.08    0.00   11.86 v _6190_/A2 (sky130_fd_sc_hd__o22a_1)
+                  0.10    0.38   12.24 v _6190_/X (sky130_fd_sc_hd__o22a_1)
+     1    0.00                           _2929_ (net)
+                  0.10    0.00   12.24 v _6191_/C1 (sky130_fd_sc_hd__a221oi_2)
+                  0.27    0.27   12.51 ^ _6191_/Y (sky130_fd_sc_hd__a221oi_2)
+     1    0.00                           _2930_ (net)
+                  0.27    0.00   12.51 ^ _6193_/B2 (sky130_fd_sc_hd__o221a_1)
+                  0.19    0.51   13.02 ^ _6193_/X (sky130_fd_sc_hd__o221a_1)
+     1    0.01                           _2932_ (net)
+                  0.19    0.00   13.02 ^ _6194_/C1 (sky130_fd_sc_hd__a211oi_4)
+                  0.10    0.10   13.12 v _6194_/Y (sky130_fd_sc_hd__a211oi_4)
+     1    0.00                           _2933_ (net)
+                  0.10    0.00   13.12 v _6195_/C1 (sky130_fd_sc_hd__a221oi_2)
+                  0.44    0.40   13.52 ^ _6195_/Y (sky130_fd_sc_hd__a221oi_2)
+     1    0.01                           _2934_ (net)
+                  0.44    0.00   13.52 ^ _6199_/A3 (sky130_fd_sc_hd__o311ai_4)
+                  0.13    0.25   13.77 v _6199_/Y (sky130_fd_sc_hd__o311ai_4)
+     1    0.00                           _2938_ (net)
+                  0.13    0.00   13.77 v _6207_/A1 (sky130_fd_sc_hd__a21o_1)
+                  0.07    0.32   14.09 v _6207_/X (sky130_fd_sc_hd__a21o_1)
+     1    0.00                           _2946_ (net)
+                  0.07    0.00   14.09 v _6211_/B1 (sky130_fd_sc_hd__a221oi_2)
+                  0.27    0.33   14.42 ^ _6211_/Y (sky130_fd_sc_hd__a221oi_2)
+     1    0.00                           _2950_ (net)
+                  0.27    0.00   14.42 ^ _6213_/B2 (sky130_fd_sc_hd__o221a_1)
+                  0.13    0.45   14.87 ^ _6213_/X (sky130_fd_sc_hd__o221a_1)
+     1    0.00                           _2952_ (net)
+                  0.13    0.00   14.87 ^ _6215_/A2 (sky130_fd_sc_hd__o21bai_2)
+                  0.14    0.16   15.04 v _6215_/Y (sky130_fd_sc_hd__o21bai_2)
+     1    0.01                           _2954_ (net)
+                  0.14    0.00   15.04 v _6216_/B1 (sky130_fd_sc_hd__a21oi_4)
+                  0.23    0.27   15.30 ^ _6216_/Y (sky130_fd_sc_hd__a21oi_4)
+     2    0.01                           _2955_ (net)
+                  0.23    0.00   15.30 ^ _6510_/A2 (sky130_fd_sc_hd__o21bai_4)
+                  0.07    0.14   15.44 v _6510_/Y (sky130_fd_sc_hd__o21bai_4)
+     1    0.00                           net178 (net)
+                  0.07    0.00   15.44 v output178/A (sky130_fd_sc_hd__clkbuf_2)
+                  0.13    0.26   15.70 v output178/X (sky130_fd_sc_hd__clkbuf_2)
+     1    0.02                           bus_rdata[8] (net)
+                  0.13    0.00   15.70 v bus_rdata[8] (out)
+                                 15.70   data arrival time
+
+                  0.00   20.00   20.00   clock clk (rise edge)
+                          0.00   20.00   clock network delay (ideal)
+                          0.00   20.00   clock reconvergence pessimism
+                         -4.00   16.00   output external delay
+                                 16.00   data required time
+-----------------------------------------------------------------------------
+                                 16.00   data required time
+                                -15.70   data arrival time
+-----------------------------------------------------------------------------
+                                  0.30   slack (MET)
+
+
