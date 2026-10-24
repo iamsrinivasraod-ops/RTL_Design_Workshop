@@ -14,6 +14,8 @@ The design is targeted for the **SKY130HD 130 nm standard-cell technology**, wit
 
 The complete project demonstration covers the Verilog RTL, functionality, simulation, synthesis, timing analysis, OpenLane physical design flow, and final layout visualization using Magic.
 
+!PROJECT SHOW CASE VIDEO BELOW!
+
 **[Watch the Complete RTL-to-GDSII Demonstration](https://drive.google.com/file/d/10ELB7btYawW17ccTUpFRmwqDVk7r2cjl/view?usp=sharing)**
 
 ---
